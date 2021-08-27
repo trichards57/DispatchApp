@@ -8,27 +8,38 @@
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Dialogs\ConnectDialog.xaml" />
+    <None Remove="Pages\ConnectPAge.xaml" />
+    <None Remove="Pages\DispatchPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Diagnostics" Version="7.0.3" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.3" />
     <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.0.3" />
+    <PackageReference Include="LiteDB" Version="5.0.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Microsoft.ProjectReunion" Version="0.8.2" />
     <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.8.2" />
     <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.8.2" />
-    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Dialogs\ConnectDialog.xaml">
+    <Page Update="Pages\ConnectPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <Folder Include="Dialogs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Pages\DispatchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

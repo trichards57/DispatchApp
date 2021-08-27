@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "DispatchApp (Package)", "DispatchApp\DispatchApp (Package)\DispatchApp (Package).wapproj", "{090E7A4A-904A-4658-AE0E-59836975F9E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchApp", "DispatchApp\DispatchApp\DispatchApp.csproj", "{6CA1518C-4EA5-4B0E-A9A2-7C91A032A2E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DispatchApp", "DispatchApp\DispatchApp\DispatchApp.csproj", "{6CA1518C-4EA5-4B0E-A9A2-7C91A032A2E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D264BA18-1CA2-4A63-B0F0-4207EE6121AD}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
