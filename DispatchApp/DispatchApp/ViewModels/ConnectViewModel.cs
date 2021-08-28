@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,12 +13,13 @@ namespace DispatchApp.ViewModels
     {
         private readonly IControllerService _controllerService;
         private readonly IEventService _eventService;
+        private readonly List<string> _existingEvents = new();
         private readonly INavigationService _navigationService;
         private readonly ISettingsService _settingsService;
         private bool _connectToLive = true;
         private string _controllerName;
+        private bool _errorConnecting = false;
         private string _event;
-        private List<string> _existingEvents = new List<string>();
 
         public ConnectViewModel(IControllerService controllerService, INavigationService navigationService, IEventService eventService, ISettingsService settingsService)
         {
@@ -28,8 +30,9 @@ namespace DispatchApp.ViewModels
             ConnectCommand = new AsyncRelayCommand(Connect, CanConnect);
         }
 
-        public IRelayCommand ConnectCommand { get; }
+        public event EventHandler FailedToConnect;
 
+        public IRelayCommand ConnectCommand { get; }
         public bool ConnectToLive { get => _connectToLive; set => SetProperty(ref _connectToLive, value); }
 
         public string ControllerName
@@ -43,6 +46,8 @@ namespace DispatchApp.ViewModels
             }
         }
 
+        public bool ErrorConnecting { get => _errorConnecting; private set => SetProperty(ref _errorConnecting, value); }
+
         public string Event
         {
             get => _event;
@@ -50,12 +55,14 @@ namespace DispatchApp.ViewModels
             {
                 _ = SetProperty(ref _event, value);
                 UpdateNames();
+                ConnectCommand.NotifyCanExecuteChanged();
+                OnPropertyChanged(nameof(IsValid));
             }
         }
 
         public ObservableCollection<string> EventNames { get; set; } = new ObservableCollection<string>();
 
-        public bool IsValid => !string.IsNullOrWhiteSpace(ControllerName);
+        public bool IsValid => !string.IsNullOrWhiteSpace(ControllerName) && !string.IsNullOrWhiteSpace(Event);
 
         public async Task OnNavigateTo()
         {
@@ -81,10 +88,15 @@ namespace DispatchApp.ViewModels
 
         private async Task Connect()
         {
+            ErrorConnecting = false;
             if (await _controllerService.LogOn(ControllerName, Event, ConnectToLive))
             {
                 _settingsService.LastControllerName = ControllerName;
                 _navigationService.NavigateTo<DispatchViewModel>();
+            }
+            else
+            {
+                FailedToConnect?.Invoke(this, EventArgs.Empty);
             }
         }
     }

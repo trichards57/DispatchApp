@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using DispatchApp.Services;
 using DispatchApp.ViewModels;
@@ -9,6 +11,10 @@ using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
+
+[assembly: InternalsVisibleTo("DispatchApp.Test")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
+[assembly: SupportedOSPlatform("windows10.0.19041")]
 
 namespace DispatchApp
 {
@@ -31,7 +37,7 @@ namespace DispatchApp
             var dataPath = Path.Combine(dataDirectory, "maindata.db");
 
             if (!Directory.Exists(dataDirectory))
-                Directory.CreateDirectory(dataDirectory);
+                _ = Directory.CreateDirectory(dataDirectory);
 
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()

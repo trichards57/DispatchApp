@@ -10,7 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D264BA18-1CA2-4A63-B0F0-4207EE6121AD}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchApp.Test", "DispatchApp.Test\DispatchApp.Test.csproj", "{BEA24590-B41E-4062-8121-73A324BAB160}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +55,18 @@ Global
 		{6CA1518C-4EA5-4B0E-A9A2-7C91A032A2E8}.Release|x64.Build.0 = Release|x64
 		{6CA1518C-4EA5-4B0E-A9A2-7C91A032A2E8}.Release|x86.ActiveCfg = Release|x86
 		{6CA1518C-4EA5-4B0E-A9A2-7C91A032A2E8}.Release|x86.Build.0 = Release|x86
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|arm64.ActiveCfg = Debug|arm64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|arm64.Build.0 = Debug|arm64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|x64.ActiveCfg = Debug|x64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|x64.Build.0 = Debug|x64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|x86.ActiveCfg = Debug|x86
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Debug|x86.Build.0 = Debug|x86
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|arm64.ActiveCfg = Release|arm64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|arm64.Build.0 = Release|arm64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|x64.ActiveCfg = Release|x64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|x64.Build.0 = Release|x64
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|x86.ActiveCfg = Release|x86
+		{BEA24590-B41E-4062-8121-73A324BAB160}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

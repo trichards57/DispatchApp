@@ -1,6 +1,8 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
+﻿using System;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using DispatchApp.ViewModels;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace DispatchApp.Pages
@@ -10,6 +12,8 @@ namespace DispatchApp.Pages
         public ConnectPage()
         {
             InitializeComponent();
+
+            ViewModel.FailedToConnect += FailedToConnect;
         }
 
         internal ConnectViewModel ViewModel { get; } = Ioc.Default.GetRequiredService<ConnectViewModel>();
@@ -17,6 +21,11 @@ namespace DispatchApp.Pages
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
             await ViewModel.OnNavigateTo();
+        }
+
+        private void FailedToConnect(object sender, EventArgs e)
+        {
+            FlyoutBase.ShowAttachedFlyout(MainGrid);
         }
     }
 }

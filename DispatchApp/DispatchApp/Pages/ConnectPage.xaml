@@ -9,9 +9,24 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <conv:BoolNegationConverter x:Name="InvertConverter" />
+        <conv:BoolToVisibilityConverter x:Name="VisibilityConverter" />
     </Page.Resources>
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Grid Name="MainGrid" VerticalAlignment="Center" HorizontalAlignment="Center" Width="258">
+        <FlyoutBase.AttachedFlyout>
+            <Flyout>
+                <StackPanel>
+                    <TextBlock HorizontalAlignment="Center" Foreground="{ThemeResource SystemErrorTextColor}" TextWrapping="WrapWholeWords" Style="{ThemeResource SubtitleTextBlockStyle}">
+                        Could Not Connect
+                    </TextBlock>
+                    <TextBlock TextWrapping="WrapWholeWords">
+                        Please check your network connection and try again.
+                    </TextBlock>
+                </StackPanel>
+            </Flyout>
+        </FlyoutBase.AttachedFlyout>
         <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -26,6 +41,8 @@
             <RadioButton IsChecked="{x:Bind ViewModel.ConnectToLive}">Operational</RadioButton>
             <RadioButton IsChecked="{x:Bind ViewModel.ConnectToLive, Converter={StaticResource InvertConverter}}">Training</RadioButton>
         </StackPanel>
-        <Button Grid.Row="4" Command="{x:Bind ViewModel.ConnectCommand}" HorizontalAlignment="Center">Connect</Button>
+        <Button Grid.Row="4" Command="{x:Bind ViewModel.ConnectCommand}" HorizontalAlignment="Center">
+            Connect
+        </Button>
     </Grid>
 </Page>
